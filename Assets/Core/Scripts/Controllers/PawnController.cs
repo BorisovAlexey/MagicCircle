@@ -11,7 +11,7 @@ namespace Core.Scripts.Controllers
     public class PawnController : IInitializable, IDisposable
     {
         private SignalBus _signalBus;
-        private PawnData _pawnData;
+        private IPawnData _pawnData;
         private GameConfig _gameConfig;
 
         private float _cachedPawnRadiusSqr;
@@ -19,7 +19,7 @@ namespace Core.Scripts.Controllers
         private Tweener _repositionTweener;
         
         
-        public PawnController(SignalBus signalBus, PawnData pawnData, GameConfig gameConfig)
+        public PawnController(SignalBus signalBus, IPawnData pawnData, GameConfig gameConfig)
         {
             _signalBus = signalBus;
             _pawnData = pawnData;

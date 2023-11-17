@@ -26,7 +26,7 @@ namespace Core.Scripts.Installers
             Rect fieldScreenRect = CalculateScreenRect();
             Container.BindInstance(new FieldData { Rect = fieldScreenRect });
 
-            PawnData pawnData = new PawnData
+            IPawnData pawnData = new PawnData
             (
                 screenPosition: 0.5f * fieldScreenRect.size, 
                 radius: _gameConfig.PawnRadius

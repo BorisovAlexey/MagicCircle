@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core.Scripts.Data
 {
-    public class PawnData : BaseElementData
+    public class PawnData : BaseElementData, IPawnData
     {
         private const string _pawnScoreKey = "Pawn.Score";
         private const string _pawnDistanceKey = "Pawn.Distance";

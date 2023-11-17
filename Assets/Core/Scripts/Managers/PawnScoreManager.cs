@@ -8,10 +8,10 @@ namespace Core.Scripts.Managers
     public class PawnScoreManager : IInitializable, IDisposable
     {
         private SignalBus _signalBus;
-        private PawnData _pawnData;
+        private IPawnData _pawnData;
 
 
-        public PawnScoreManager(SignalBus signalBus, PawnData pawnData)
+        public PawnScoreManager(SignalBus signalBus, IPawnData pawnData)
         {
             _signalBus = signalBus;
             _pawnData = pawnData;

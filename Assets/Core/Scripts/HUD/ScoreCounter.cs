@@ -11,12 +11,12 @@ namespace Core.Scripts.HUD
     {
         [SerializeField] private TMP_Text _scoreCounterText;
         
-        private PawnData _pawnData;
+        private IPawnData _pawnData;
         private readonly CompositeDisposable _compositeDisposable = new();
         
         
         [Inject]
-        public void Construct(PawnData pawnData)
+        public void Construct(IPawnData pawnData)
         {
             _pawnData = pawnData;
         }

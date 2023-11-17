@@ -17,12 +17,12 @@ namespace Core.Scripts.Installers
         [SerializeField] private GameObject _pawnPrefab;
         [SerializeField] private GameObject _quadPrefab;
         
-        private PawnData _pawnData;
+        private IPawnData _pawnData;
         private GameConfig _gameConfig;
 
         
         [Inject]
-        public void Construct(PawnData pawnData, GameConfig gameConfig)
+        public void Construct(IPawnData pawnData, GameConfig gameConfig)
         {
             _pawnData = pawnData;
             _gameConfig = gameConfig;

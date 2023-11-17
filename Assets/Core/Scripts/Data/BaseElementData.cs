@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core.Scripts.Data
 {
-    public abstract class BaseElementData
+    public abstract class BaseElementData : IElementData
     {
         public ReactiveProperty<Vector2> ScreenPosition { get; }
 

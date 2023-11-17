@@ -10,14 +10,14 @@ namespace Core.Scripts.Managers
     public class QuadsPickupManager : IInitializable, IDisposable
     {
         private SignalBus _signalBus;
-        private PawnData _pawnData;
+        private IPawnData _pawnData;
         private QuadsData _quadsData;
         private float _cachedPickupDistanceSqr;
         
         private readonly CompositeDisposable _compositeDisposable = new();
         
         
-        public QuadsPickupManager(SignalBus signalBus, PawnData pawnData, QuadsData quadsData)
+        public QuadsPickupManager(SignalBus signalBus, IPawnData pawnData, QuadsData quadsData)
         {
             _signalBus = signalBus;
             _pawnData = pawnData;

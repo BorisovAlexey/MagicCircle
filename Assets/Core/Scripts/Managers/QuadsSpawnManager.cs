@@ -16,15 +16,16 @@ namespace Core.Scripts.Managers
         private GameConfig _gameConfig;
         private QuadsData _quadsData;
         private FieldData _fieldData;
-        private PawnData _pawnData;
+        private IPawnData _pawnData;
         
         private float _cachedPawnRadiusSqr;
+        private float _cachedMinDistanceSqr;
         
         private readonly CancellationTokenSource _cancellationTokenSource = new ();
         
 
         public QuadsSpawnManager(SignalBus signalBus, QuadData.Pool quadsPool, GameConfig gameConfig, QuadsData quadsData,
-            FieldData fieldData, PawnData pawnData)
+            FieldData fieldData, IPawnData pawnData)
         {
             _signalBus = signalBus;
             _quadsPool = quadsPool;
@@ -37,6 +38,7 @@ namespace Core.Scripts.Managers
         public void Initialize()
         {
             _cachedPawnRadiusSqr = _pawnData.Radius * _pawnData.Radius;
+            _cachedMinDistanceSqr = _gameConfig.QuadRect.height * _gameConfig.QuadRect.height;
             
             SpawnProcess();
         }
@@ -92,7 +94,7 @@ namespace Core.Scripts.Managers
         {
             foreach (QuadData quadData in _quadsData.List)
             {
-                if (Vector2.SqrMagnitude(quadData.Rect.center - screenPosition) < _gameConfig.QuadRect.height)
+                if (Vector2.SqrMagnitude(quadData.Rect.center - screenPosition) < _cachedMinDistanceSqr)
                 {
                     return true;
                 }

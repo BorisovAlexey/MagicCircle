@@ -23,9 +23,19 @@ namespace Core.Scripts.Managers
                 .Where(_ => Input.GetMouseButton(0))
                 .Subscribe(_ =>
                 {
-                    _signalBus.Fire(new ClickSignal{ ScreenPosition = Input.mousePosition });
+                    Vector2 screenPosition = ClampScreenPosition(Input.mousePosition);
+                    
+                    _signalBus.Fire(new ClickSignal{ ScreenPosition = screenPosition });
                 });
            _compositeDisposable.Add(clickStream);
+        }
+
+        private Vector2 ClampScreenPosition(Vector2 screenPosition)
+        {
+            return new Vector2(
+                x: Mathf.Clamp(screenPosition.x, 0, Screen.width),
+                y: Mathf.Clamp(screenPosition.y, 0, Screen.height)
+            );
         }
 
         private void OnDisable()

@@ -8,13 +8,13 @@ namespace Core.Scripts.Views.UI
 {
     public class PawnView : BaseElementView, IInitializable, IDisposable
     {
-        private PawnData _pawnData;
+        private IPawnData _pawnData;
         private Camera _camera;
         private readonly CompositeDisposable _compositeDisposable = new();
         
         
         [Inject]
-        private void Construct(PawnData pawnData, Camera camera)
+        private void Construct(IPawnData pawnData, Camera camera)
         {
             _pawnData = pawnData;
             _camera = camera;
